@@ -1,0 +1,53 @@
+{
+  "name": "@approva/server-sdk",
+  "version": "0.1.0",
+  "description": "Approva Server SDK for on-chain authorization on Base.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": {
+        "import": "./dist/index.d.ts",
+        "require": "./dist/index.d.cts"
+      },
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "clean": "rm -rf dist",
+    "verify": "npm run typecheck && npm run build",
+    "link:global": "npm run build && npm link",
+    "unlink:global": "npm unlink -g @approva/server-sdk",
+    "relink": "npm unlink -g @approva/server-sdk && npm run build && npm link",
+    "pack:local": "npm run build && npm pack",
+    "prepublishOnly": "npm run verify"
+  },
+  "dependencies": {
+    "@simplewebauthn/server": "^13.3.2",
+    "axios": "^1.19.0",
+    "ws": "^8.21.3",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/ws": "^8.18.1",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}

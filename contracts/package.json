@@ -1,0 +1,11 @@
+{
+  "name": "@approva/contracts",
+  "private": true,
+  "scripts": {
+    "build": "forge build -vvv",
+    "test": "forge test -vvv",
+    "gas": "forge test --gas-report",
+    "abi": "node scripts/export-abis.mjs",
+    "build:all": "forge build -vvv && npm run abi"
+  }
+}
